@@ -1,0 +1,22 @@
+# Технічні налаштування воркера. Усе про твій дім (об'єкти, інвертори, пристрої, тексти
+# повідомлень, люди) налаштовується в боті: ⚙️ Налаштування. Паролі — лише в секретах Cloudflare.
+name = "home-bot"                 # назва воркера в Cloudflare
+main = "src/index.js"
+compatibility_date = "2026-10-16"
+keep_vars = true
+
+# Базу Cloudflare створює сам під час першого розгортання.
+[[d1_databases]]
+binding = "DB"
+database_name = "home-bot"
+
+# Перевірка кожні 2 хв.
+[triggers]
+crons = ["*/2 * * * *"]
+
+# Необов'язково: запускати воркер ближче до хмар виробників у Європі
+# [placement]
+# region = "aws:eu-central-1"
+
+[observability]
+enabled = true
